@@ -304,5 +304,9 @@ export const architectureFlow: string[] = [
   "Business Decisions",
 ];
 
-export const VIDEO_SRC = "/videos/gajendra-portfolio-intro.mp4";
-export const VIDEO_POSTER = "/images/video-poster.webp";
+// Prefixed so root-relative public assets resolve under a GitHub Pages subpath.
+export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || "";
+export const VIDEO_SRC = `${BASE_PATH}/videos/gajendra-portfolio-intro.mp4`;
+export const VIDEO_POSTER = `${BASE_PATH}/images/video-poster.webp`;
+export const PORTRAIT_SRC = `${BASE_PATH}/images/portrait.webp`;
+export const CAPTIONS_SRC = `${BASE_PATH}/captions/portfolio-intro.vtt`;

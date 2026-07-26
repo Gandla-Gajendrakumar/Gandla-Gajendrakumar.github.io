@@ -9,7 +9,7 @@ import { Button, StatusBadge } from "@/components/ui";
 import { useGSAP } from "@/hooks/useGSAP";
 import { gsap } from "@/lib/gsap";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import { profile, VIDEO_SRC, VIDEO_POSTER } from "@/data/portfolio";
+import { profile, VIDEO_SRC, VIDEO_POSTER, CAPTIONS_SRC } from "@/data/portfolio";
 import styles from "./VideoIntro.module.css";
 
 // Three.js only on the client, never during SSR.
@@ -173,7 +173,7 @@ export function VideoIntro() {
           autoPlay
           preload="metadata"
         >
-          <track kind="captions" src="/captions/portfolio-intro.vtt" srcLang="en" label="English" />
+          <track kind="captions" src={CAPTIONS_SRC} srcLang="en" label="English" />
         </video>
       </div>
 

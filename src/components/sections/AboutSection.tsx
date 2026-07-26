@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui";
-import { profile, education } from "@/data/portfolio";
+import { profile, education, PORTRAIT_SRC } from "@/data/portfolio";
 import styles from "./sections.module.css";
 
 const infoCards = [
@@ -42,7 +42,7 @@ export function AboutSection() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className={styles.portraitImg}
-              src="/images/portrait.webp"
+              src={PORTRAIT_SRC}
               alt="Gandla Gajendra Kumar at his desk"
               loading="lazy"
             />
