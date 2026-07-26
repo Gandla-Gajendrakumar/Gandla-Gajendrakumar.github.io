@@ -39,9 +39,13 @@ export function AboutSection() {
           </Reveal>
 
           <Reveal className={styles.portrait} y={40}>
-            <div className={styles.monogram} aria-hidden="true">
-              GG
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className={styles.portraitImg}
+              src="/images/portrait.png"
+              alt="Gandla Gajendra Kumar at his desk"
+              loading="lazy"
+            />
             <span className={styles.portraitTag}>Lead Data Engineer × GenAI Builder</span>
           </Reveal>
         </div>

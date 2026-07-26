@@ -305,4 +305,4 @@ export const architectureFlow: string[] = [
 ];
 
 export const VIDEO_SRC = "/videos/gajendra-portfolio-intro.mp4";
-export const VIDEO_POSTER = "/images/video-poster.svg";
+export const VIDEO_POSTER = "/images/video-poster.webp";
