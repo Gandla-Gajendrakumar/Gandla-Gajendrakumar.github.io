@@ -43,7 +43,7 @@ export function AboutSection() {
             <img
               className={styles.portraitImg}
               src={PORTRAIT_SRC}
-              alt="Gandla Gajendra Kumar at his desk"
+              alt="Gandla Gajendra Kumar"
               loading="lazy"
             />
             <span className={styles.portraitTag}>Lead Data Engineer × GenAI Builder</span>
