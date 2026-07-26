@@ -101,6 +101,13 @@
   position: relative;
   z-index: 5;
   padding-bottom: clamp(5rem, 12vh, 8rem);
+  /* Uses the shared .container width so the left edge lines up with the nav and
+     section content. Individual text elements set their own narrow max-widths,
+     keeping everything left-aligned at every screen size. */
+  text-align: left;
+}
+/* Keep the hero copy in a left column so it never sprawls under the subject. */
+.content > * {
   max-width: 620px;
 }
 .eyebrow {
