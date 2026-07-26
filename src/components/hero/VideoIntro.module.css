@@ -1,0 +1,297 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  align-items: flex-end;
+  isolation: isolate;
+}
+
+/* Ambient blurred background — enlarged copy of the same video. */
+.ambient {
+  position: absolute;
+  inset: -12%;
+  width: 124%;
+  height: 124%;
+  object-fit: cover;
+  filter: blur(46px) saturate(0.7) brightness(0.5);
+  opacity: 0.5;
+  transform: scale(1.1);
+  z-index: 0;
+}
+
+/* Foreground talking-head video — framed centre-right on desktop. */
+.videoWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 72% center;
+}
+
+/* Overlays */
+.overlayGradient {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(90deg, rgba(8, 8, 10, 0.94) 0%, rgba(8, 8, 10, 0.6) 40%, rgba(8, 8, 10, 0.05) 72%),
+    radial-gradient(120% 90% at 78% 42%, rgba(255, 106, 61, 0.14), transparent 55%),
+    radial-gradient(100% 80% at 60% 30%, rgba(91, 140, 255, 0.08), transparent 60%);
+}
+.overlayVignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background:
+    linear-gradient(180deg, rgba(8, 8, 10, 0.55) 0%, transparent 22%, transparent 55%, rgba(8, 8, 10, 0.92) 100%),
+    radial-gradient(130% 120% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.65) 100%);
+  pointer-events: none;
+}
+.grain {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  opacity: 0.045;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Code-motif glyphs */
+.glyphs {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  font-family: var(--font-mono);
+}
+.glyph {
+  position: absolute;
+  color: var(--blue);
+  opacity: 0.18;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  animation: glyphFloat 9s ease-in-out infinite;
+  will-change: transform;
+}
+@keyframes glyphFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 5;
+  padding-bottom: clamp(5rem, 12vh, 8rem);
+  max-width: 900px;
+}
+.eyebrow {
+  display: block;
+  margin-bottom: 1.1rem;
+}
+.name {
+  font-size: clamp(2.6rem, 11vw, 6.4rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin-bottom: 1.2rem;
+}
+.nameLine {
+  display: block;
+}
+.role {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 2.2vw, 1.05rem);
+  color: var(--blue);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+.statement {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3.4vw, 2rem);
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 1rem;
+  max-width: 20ch;
+}
+.desc {
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  max-width: 54ch;
+  margin-bottom: 1.8rem;
+}
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-bottom: 1.6rem;
+}
+
+/* Controls (lower-right) */
+.controlsWrap {
+  position: absolute;
+  right: clamp(1.25rem, 5vw, 3rem);
+  bottom: clamp(1.5rem, 5vh, 2.5rem);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.controls {
+  display: flex;
+  gap: 0.5rem;
+}
+.ctrlBtn {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  color: var(--text);
+  background: var(--glass);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(14px);
+  transition: background var(--dur) var(--ease), transform var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+.ctrlBtn:hover {
+  background: rgba(30, 30, 36, 0.8);
+  border-color: var(--amber);
+  transform: translateY(-2px);
+}
+.ctrlBtn:active {
+  transform: scale(0.94);
+}
+
+/* Sound hint */
+.soundHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--glass-strong);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(14px);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  animation: hintIn 0.5s var(--ease-out) both;
+}
+.hintWave {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--amber);
+  animation: soundPulse 1.5s ease-in-out infinite;
+}
+@keyframes soundPulse {
+  0%, 100% { transform: scale(0.7); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 1; }
+}
+@keyframes hintIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll indicator (bottom centre) */
+.scrollWrap {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1rem, 4vh, 2rem);
+  transform: translateX(-50%);
+  z-index: 6;
+}
+.scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text-dim);
+  transition: color var(--dur) var(--ease);
+}
+.scroll:hover {
+  color: var(--text);
+}
+.scrollText {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+}
+.scrollLine {
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(to bottom, var(--amber), transparent);
+  position: relative;
+  overflow: hidden;
+}
+.scrollLine::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--text);
+  animation: scrollPulse 1.8s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0% { transform: translateY(-100%); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translateY(300%); opacity: 0; }
+}
+
+/* Tablet / mobile — reframe around the face, content low, stronger scrim. */
+@media (max-width: 768px) {
+  .video {
+    object-position: 58% 22%;
+  }
+  .content {
+    max-width: 100%;
+    padding-top: calc(var(--nav-h) + 3.5rem);
+    padding-bottom: clamp(6.5rem, 20vh, 9rem);
+  }
+  .statement {
+    max-width: 100%;
+  }
+  .overlayGradient {
+    background:
+      linear-gradient(180deg, rgba(8, 8, 10, 0.35) 0%, rgba(8, 8, 10, 0.2) 40%, rgba(8, 8, 10, 0.96) 100%),
+      radial-gradient(120% 60% at 50% 20%, rgba(255, 106, 61, 0.12), transparent 60%);
+  }
+  .controlsWrap {
+    bottom: auto;
+    top: calc(var(--nav-h) + 0.75rem);
+  }
+  .scrollText {
+    display: none;
+  }
+  .glyphs {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hintWave,
+  .scrollLine::after,
+  .glyph {
+    animation: none;
+  }
+}
