@@ -46,14 +46,14 @@ export const metadata: Metadata = {
       "Enterprise data platforms, BI modernisation, LLM applications, RAG systems and intelligent automation.",
     url: SITE_URL,
     siteName: "Gandla Gajendra Kumar",
-    images: [{ url: "/images/social-preview.webp", width: 1200, height: 630, alt: "Gandla Gajendra Kumar" }],
+    images: [{ url: "/images/social-preview.png", width: 1200, height: 630, alt: "Gandla Gajendra Kumar" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Gandla Gajendra Kumar | Lead Data Engineer & GenAI Builder",
     description:
       "Enterprise data platforms, BI modernisation, LLM applications, RAG systems and intelligent automation.",
-    images: ["/images/social-preview.webp"],
+    images: ["/images/social-preview.png"],
   },
   robots: { index: true, follow: true },
 };
